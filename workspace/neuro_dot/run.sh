@@ -21,6 +21,6 @@ OUTPUTFOLDER_IMAGES="/outputfiles/${dt}_images/"
 
 mkdir $OUTPUTFOLDER_NOTEBOOK $OUTPUTFOLDER_IMAGES
 
-echo 'papermill neuro_dot/NeuroDOT_PreProcessing_Script_dynamicFilterMode_updated.ipynb $OUTPUTFOLDER_NOTEBOOK/output.ipynb -p patient_data /input/$SUBJECT_MAT -p params_file /input/$PARAMS -p saveImagePath $OUTPUTFOLDER_IMAGES'
+echo 'papermill neuro_dot/NeuroDOT_PreProcessing_Notebook.ipynb $OUTPUTFOLDER_NOTEBOOK/output.ipynb -p patient_data /input/$SUBJECT_MAT -p params_file /input/$PARAMS -p saveImagePath $OUTPUTFOLDER_IMAGES'
 
-papermill neuro_dot/NeuroDOT_PreProcessing_Script_dynamicFilterMode_updated.ipynb $OUTPUTFOLDER_NOTEBOOK/output.ipynb -p participant_data /input/$SUBJECT_MAT -p params_file /input/$PARAMS -p saveImagePath $OUTPUTFOLDER_IMAGES
+papermill neuro_dot/NeuroDOT_PreProcessing_Notebook.ipynb $OUTPUTFOLDER_NOTEBOOK/output.ipynb -p participant_data /input/$SUBJECT_MAT -p params_file /input/$PARAMS -p saveImagePath $OUTPUTFOLDER_IMAGES
