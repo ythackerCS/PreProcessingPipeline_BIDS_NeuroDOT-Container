@@ -41,6 +41,9 @@ user=args.xnat_user
 pipeline = "Pre-processing"
 outpath="./outputfiles/assessor.xml"
 
+params = open("/input/params.txt", "r")
+
+print(f.read())
 
 now = dt.datetime.today()
 isodate = now.strftime('%Y-%m-%d')
@@ -87,7 +90,7 @@ assessorElementsList = [
     E("pipelineRunDateTime", timestamp),
     E("user", user),
     E("scanUsed", scanId),
-    E("paramsUsed", "{sample params YO!}")
+    E("paramsUsed", params)
 ]
 
 # assessorElementsList.extend([
