@@ -6,7 +6,7 @@
     "schema-version": "1.0",
     "image": "registry.nrg.wustl.edu/docker/nrg-repo/yash/preprocessingneurodot_bids:latest",
     "type": "docker",
-    "command-line": "neuro_dot/run.sh #SUBJECT_MAT# #PARAMS#",
+    "command-line": "neuro_dot/run.sh #SUBJECT_MAT# #PARAMS# #SCAN_ID# #SESSION_ID# #SESSION_LABEL# #PROJECT# $XNAT_USER",
     "override-entrypoint": true,
     "mounts": [
       {
@@ -36,9 +36,36 @@
         "required": true,
         "replacement-key": "#PARAMS#",
         "select-values": []
+      },
+      {
+        "name": "SCAN_ID",
+        "description": "ID of the scan",
+        "required": true
+      },
+      {
+        "name": "SESSION_ID",
+        "description": "ID of the session",
+        "required": true
+      },
+      {
+          "name": "SESSION_LABEL",
+          "description": "Label of the session",
+          "required": true
+      },
+      {
+          "name": "PROJECT",
+          "description": "Project in which session and assessor live",
+          "required": true
       }
     ],
     "outputs": [
+      {
+        "name": "ASSESSOR_XML",
+        "description": "Assessor XML file",
+        "required": true,
+        "mount": "out",
+        "path": "assessor.xml"
+      },
       {
         "name": "output",
         "description": "The process output.",
@@ -115,16 +142,59 @@
             "derived-from-wrapper-input": "params-file",
             "derived-from-xnat-object-property": "name",
             "multiple": false
+          },
+          {
+            "name": "scan_id",
+            "required": true,
+            "derived-from-wrapper-input": "scan",
+            "derived-from-xnat-object-property": "id",
+            "provides-value-for-command-input": "SCAN_ID"
+          },
+          {
+            "name": "session",
+            "description": "Session",
+            "type": "Session",
+            "required": true,
+            "load-children": false,
+            "derived-from-wrapper-input": "scan",
+            "multiple": false
+          },
+          {
+            "name": "session_id",
+            "required": true,
+            "derived-from-wrapper-input": "session",
+            "derived-from-xnat-object-property": "id",
+            "provides-value-for-command-input": "SESSION_ID"
+          },
+          {
+              "name": "session_label",
+              "required": true,
+              "derived-from-wrapper-input": "session",
+              "derived-from-xnat-object-property": "label",
+              "provides-value-for-command-input": "SESSION_LABEL"
+          },
+          {
+              "name": "project",
+              "required": true,
+              "derived-from-wrapper-input": "session",
+              "derived-from-xnat-object-property": "project-id",
+              "provides-value-for-command-input": "PROJECT"
           }
         ],
         "output-handlers": [
           {
-            "name": "output-resource",
-            "accepts-command-output": "output",
-            "as-a-child-of": "scan",
-            "type": "Resource",
-            "label": "RESULTS",
-            "tags": []
+            "name": "assessor",
+            "type": "Assessor",
+            "accepts-command-output": "ASSESSOR_XML",
+            "as-a-child-of": "session",
+            "xsi-type": "fnirs:fnirsPipelineAssessorData"
+          },
+          {
+              "name": "assessor_resource",
+              "type": "Resource",
+              "accepts-command-output": "output",
+              "as-a-child-of": "assessor",
+              "label": "RESULTS"
           }
         ]
       }
