@@ -7,10 +7,10 @@ import json
 import random
 import string
 import argparse
-import requests
-import docopt
-import requests.packages.urllib3
-requests.packages.urllib3.disable_warnings()
+# import requests
+# import docopt
+# import requests.packages.urllib3
+# requests.packages.urllib3.disable_warnings()
 
 # version = "1.0"
 # args = docopt(__doc__, version=version)
