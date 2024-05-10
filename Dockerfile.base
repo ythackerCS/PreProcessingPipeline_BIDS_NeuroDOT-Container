@@ -1,6 +1,6 @@
 FROM jupyter/scipy-notebook:python-3.8.13
 ARG SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
-RUN pip install deepdiff matplotlib normalize_easy numpy scipy pyvista sympy papermill lxml DateTime argparse
+RUN pip install deepdiff matplotlib normalize_easy numpy scipy pyvista sympy papermill lxml DateTime argparse pandoc nbconvert 
 COPY ./workspace /workspace/
 WORKDIR /workspace
 USER root
