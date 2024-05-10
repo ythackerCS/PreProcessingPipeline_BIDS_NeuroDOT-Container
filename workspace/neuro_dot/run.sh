@@ -36,3 +36,5 @@ echo 'papermill neuro_dot/NeuroDOT_PreProcessing_Notebook.ipynb $OUTPUTFOLDER_NO
 papermill neuro_dot/NeuroDOT_PreProcessing_Notebook.ipynb $OUTPUTFOLDER_NOTEBOOK/output.ipynb -p participant_data /input/$SUBJECT_MAT -p params_file /input/$PARAMS -p saveImagePath $OUTPUTFOLDER_IMAGES
 
 python neuro_dot/makeXML.py --scanID $SCAN_ID --sessionID $SESSION_ID  --sessionLabel $SESSION_LABEL --project $PROJECT --xnat_user $XNAT_USER
+
+python3 -m nbconvert --to html $OUTPUTFOLDER_NOTEBOOK/output.ipynb --output $OUTPUTFOLDER_NOTEBOOK/output.html

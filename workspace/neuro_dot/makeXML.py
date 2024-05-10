@@ -38,12 +38,12 @@ sessionLabel = args.sessionLabel
 project = args.project
 scanId = args.scanID
 user=args.xnat_user
-pipeline = "Pre-processing"
+pipeline = "pre-processing"
 outpath="./outputfiles/assessor.xml"
 
 params = open("/input/params.txt", "r")
 
-print(f.read())
+
 
 now = dt.datetime.today()
 isodate = now.strftime('%Y-%m-%d')
@@ -88,7 +88,7 @@ assessorElementsList = [
     Exnat("imageSession_ID", sessionId),
     E("pipelineRun", pipeline),
     E("pipelineRunDateTime", timestamp),
-    E("user", user),
+    E("userThatRan", user),
     E("scanUsed", scanId),
     E("paramsUsed", params)
 ]
