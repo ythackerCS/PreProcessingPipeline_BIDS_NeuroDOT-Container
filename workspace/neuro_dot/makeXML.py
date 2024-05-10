@@ -49,8 +49,8 @@ now = dt.datetime.today()
 isodate = now.strftime('%Y-%m-%d')
 timestampforlabel = now.strftime('%Y%m%d%H%M%S')
 timestamp = dt.datetime.now().isoformat()
-assessorId = '{}_{}_{}'.format(sessionId, pipeline,timestampforlabel)
-assessorLabel = '{}_{}'.format(sessionLabel, pipeline)
+assessorId = '{}_{}_{}'.format(scanId, pipeline,timestampforlabel)
+assessorLabel = '{}_{}'.format(scanId, pipeline)
 
 
 nsdict = {'xnat':'http://nrg.wustl.edu/xnat',
