@@ -39,7 +39,7 @@ project = args.project
 scanId = args.scanId
 user=args.xnat_user
 pipeline = "pre-processing"
-outpath="./outputfiles/assessor.xml"
+outpath="/outputfiles/assessor.xml"
 params = ""
 
 with open("/input/params.txt", "r") as f:
