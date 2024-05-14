@@ -36,7 +36,7 @@ args=parser.parse_args()
 sessionId = args.sessionId
 sessionLabel = args.sessionLabel
 project = args.project
-scanId = args.scanID
+scanId = args.scanId
 user=args.xnat_user
 pipeline = "pre-processing"
 outpath="./outputfiles/assessor.xml"
@@ -50,7 +50,7 @@ isodate = now.strftime('%Y-%m-%d')
 timestampforlabel = now.strftime('%Y%m%d%H%M%S')
 timestamp = dt.datetime.now().isoformat()
 assessorId = '{}_{}_{}'.format(scanId, pipeline,timestampforlabel)
-assessorLabel = '{}_{}'.format(scanId, pipeline)
+assessorLabel = '{}_{}_{}'.format(sessionId,scanId, pipeline)
 
 
 nsdict = {'xnat':'http://nrg.wustl.edu/xnat',
