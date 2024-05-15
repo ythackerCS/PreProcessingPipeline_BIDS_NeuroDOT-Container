@@ -1,6 +1,7 @@
 FROM jupyter/scipy-notebook:python-3.8.13
 ARG SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
 RUN pip install deepdiff matplotlib normalize_easy numpy scipy pyvista sympy papermill lxml DateTime argparse pandoc nbconvert imgkit
+USER root
 RUN chmod 777 -R /home/jovyan
 RUN apt-get update && \
     apt-get install -y xz-utils libxext6 fontconfig libxrender1 && \
@@ -9,5 +10,4 @@ RUN tar xvJf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN cp wkhtmltox/bin/wkhtmlto* /usr/bin/
 COPY ./workspace /workspace/
 WORKDIR /workspace
-USER root
 HEALTHCHECK NONE
