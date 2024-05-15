@@ -4,9 +4,9 @@ RUN pip install deepdiff matplotlib normalize_easy numpy scipy pyvista sympy pap
 RUN chmod 777 -R /home/jovyan
 RUN apt-get update && \
     apt-get install -y xz-utils libxext6 fontconfig libxrender1 && \
-    curl "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.6-1_linux-generic-amd64.tar.xz" > wkhtmltox.tar.xz && \
-    tar --directory=/usr/local --strip 1 -xJf wkhtmltox.tar.xz && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /var/cache/debconf/*-old wkhtmltox.tar.xz
+RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN tar xvJf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN cp wkhtmltox/bin/wkhtmlto* /usr/bin/
 COPY ./workspace /workspace/
 WORKDIR /workspace
 USER root
