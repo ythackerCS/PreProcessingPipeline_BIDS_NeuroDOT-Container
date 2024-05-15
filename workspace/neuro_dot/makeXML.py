@@ -42,8 +42,8 @@ pipeline = "pre-processing"
 outpath="/outputfiles/assessor.xml"
 params = ""
 
-with open("/input/params.txt", "r") as f:
-    params = f.read()
+# with open("/input/params.txt", "r") as f:
+#     params = f.read()
 
 
 
@@ -92,7 +92,6 @@ assessorElementsList = [
     E("pipelineRunDateTime", timestamp),
     E("userThatRan", user),
     E("scanUsed", scanId),
-    E("paramsUsed", params)
 ]
 
 # assessorElementsList.extend([
