@@ -39,4 +39,4 @@ python neuro_dot/makeXML.py $SCAN_ID $SESSION_ID $SESSION_LABEL $PROJECT $XNAT_U
 
 python -m nbconvert --to html $OUTPUTFOLDER_NOTEBOOK/output.ipynb --output $OUTPUTFOLDER_NOTEBOOK/output.html
 
-python neuro_dot/html2Img.py $OUTPUTFOLDER_NOTEBOOK/output.html $OUTPUTFOLDER_NOTEBOOK/output.jpg
+python neuro_dot/html2Img.py $OUTPUTFOLDER_NOTEBOOK/output.html $OUTPUTFOLDER_IMAGES/output.jpg
