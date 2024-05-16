@@ -5,7 +5,7 @@ USER root
 RUN chmod 777 -R /home/jovyan
 RUN apt-get install -y xz-utils libxext6 wget
 RUN apt-get update
-RUN apt-get install -y curl
+RUN apt-get install -y curl jq
 RUN apt-get -y install wkhtmltopdf
 RUN sudo strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
 COPY ./workspace /workspace/

@@ -24,7 +24,7 @@ dt=`date --utc +%Y%m%d-%H%M%S`
 
 echo dt 
 
-$USER = $(curl -X GET "https://oxi.circ.wustl.edu/xapi/workflows/$XNAT_WORKFLOW_ID" -H "accept: application/json | jq -r = '.createUser'")
+$USER = $(curl -u $XNAT_USER:$XNAT_PASS https://oxi.circ.wustl.edu/xapi/workflows/$XNAT_WORKFLOW_ID | jq .createUser)
 
 echo "user is, $USER"
 
