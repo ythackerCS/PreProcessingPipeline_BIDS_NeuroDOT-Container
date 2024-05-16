@@ -19,12 +19,14 @@ shift
 SESSION_LABEL=$1
 shift
 PROJECT=$1
-shift
-XNAT_USER=$1
 
 dt=`date --utc +%Y%m%d-%H%M%S`
 
 echo dt 
+
+$USER = $(curl -X GET "https://oxi.circ.wustl.edu/xapi/workflows/$XNAT_WORKFLOW_ID" -H "accept: application/json | jq -r = '.createUser'")
+
+echo "user is, $USER"
 
 OUTPUTFOLDER_NOTEBOOK="/outputfiles/preprocessing_notebook"
 OUTPUTFOLDER_IMAGES="/outputfiles/images/"
@@ -35,7 +37,7 @@ echo 'papermill neuro_dot/NeuroDOT_PreProcessing_Notebook.ipynb $OUTPUTFOLDER_NO
 
 papermill neuro_dot/NeuroDOT_PreProcessing_Notebook.ipynb $OUTPUTFOLDER_NOTEBOOK/output.ipynb -p participant_data /input/$SUBJECT_MAT -p params_file /input/$PARAMS -p saveImagePath $OUTPUTFOLDER_IMAGES
 
-python neuro_dot/makeXML.py $SCAN_ID $SESSION_ID $SESSION_LABEL $PROJECT $XNAT_USER
+python neuro_dot/makeXML.py $SCAN_ID $SESSION_ID $SESSION_LABEL $PROJECT $USER
 
 python -m nbconvert --to html $OUTPUTFOLDER_NOTEBOOK/output.ipynb --output $OUTPUTFOLDER_NOTEBOOK/output.html
 

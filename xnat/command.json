@@ -6,7 +6,7 @@
     "schema-version": "1.0",
     "image": "registry.nrg.wustl.edu/docker/nrg-repo/yash/preprocessingneurodot_bids:latest",
     "type": "docker",
-    "command-line": "neuro_dot/run.sh #SUBJECT_MAT# #PARAMS# #SCAN_ID# #SESSION_ID# #SESSION_LABEL# #PROJECT# $XNAT_USER",
+    "command-line": "neuro_dot/run.sh #SUBJECT_MAT# #PARAMS# #SCAN_ID# #SESSION_ID# #SESSION_LABEL# #PROJECT#",
     "override-entrypoint": true,
     "mounts": [
       {
