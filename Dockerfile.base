@@ -1,6 +1,7 @@
 FROM jupyter/scipy-notebook:python-3.8.13
 ARG SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True
-RUN pip install deepdiff matplotlib normalize_easy numpy scipy pyvista sympy papermill lxml DateTime argparse pandoc nbconvert imgkit
+RUN pip install deepdiff matplotlib==3.5.2 normalize_easy==0.0.3 numpy==1.19.5 scipy==1.10.1 sympy pyvista sympy  
+papermill lxml DateTime argparse pandoc nbconvert imgkit
 USER root
 RUN chmod 777 -R /home/jovyan
 RUN apt-get install -y xz-utils libxext6 wget
